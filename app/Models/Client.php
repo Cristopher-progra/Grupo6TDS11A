@@ -17,4 +17,10 @@ class Client extends Model
     //Campos de las tablas
     protected $fillable = ['Nombre','Apellido','Fecha_Nac'];
 
+    public function pedidos()
+    {
+        return $this->hasMany(Order::class, 'Id_Cliente');
+    }
+
+
 }

@@ -16,5 +16,10 @@ class Order extends Model
 
     //Campos de las tablas
     protected $fillable = ['FechaPedido','FechaEntrega','Observaciones'];
+
+    public function cliente()
+    {
+        return $this->belongsTo(Client::class, 'Id_Cliente');
+    }
     
 }
