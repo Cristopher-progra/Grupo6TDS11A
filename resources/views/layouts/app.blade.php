@@ -50,7 +50,7 @@
                             @endif
                         @else
                              <!-- Seccion para declarar rutas -->                    
-                            <li class="nav-item" > <a class="nav-link" href="{{  route('register') }}" >Cliente</a></li>
+                            <li class="nav-item" > <a class="nav-link" href="{{   URL::to('cliente') }}" >Cliente</a></li>
                             
                             <li class="nav-item" > <a class="nav-link" href="{{  route('register') }}" >Pedido</a></li>
 
