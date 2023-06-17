@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class PedidoController extends Controller
@@ -13,7 +15,12 @@ class PedidoController extends Controller
      */
     public function index()
     {
-        //
+        $pedido =  new Order();
+        $todoslospedidos = $pedido->all(); 
+
+        
+        return view('pedido.index' , compact('todoslospedidos')); 
+
     }
 
     /**
@@ -22,8 +29,12 @@ class PedidoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {   
+
+        $client = new Client(); // Obtén todos los clientes
+        $clientes = $client->all(); 
+        return view('pedido.create' , compact('clientes'));  
+
     }
 
     /**
@@ -34,7 +45,25 @@ class PedidoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+            // Validar los datos del formulario
+        $request->validate([
+            'fechapedido' => 'required',
+            'fechaentrega' => 'required',
+            'relacioncliente' => 'required',
+            'observacion' => 'required',
+        ]);
+
+        // Crear un nuevo objeto de pedido con los datos del formulario
+        $pedido = new Order();
+        $pedido->FechaPedido = $request->input('fechapedido');
+        $pedido->FechaEntrega = $request->input('fechaentrega');
+        $pedido->Id_Cliente = $request->input('relacioncliente');
+        $pedido->Observaciones = $request->input('observacion');
+        $pedido->save();
+
+        // Redireccionar a la página adecuada después de almacenar el pedido
+        return redirect()->route('pedido.index');
+       
     }
 
     /**
@@ -55,8 +84,18 @@ class PedidoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    {   
+        $pedido = new Order(); 
+        
+        $pedidoelegir = $pedido->find($id) ;
+        
+
+        
+        $client = new Client(); // Obtén todos los clientes
+        $clientes = $client->all(); 
+        
+        return view( 'pedido.edit' , compact('pedidoelegir' , 'clientes' ) ); 
+        
     }
 
     /**
@@ -68,7 +107,24 @@ class PedidoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+    // Obtener el pedido a actualizar
+    $pedido = Order::find($id);
+    
+    // Actualizar los campos del pedido con los datos del formulario
+    $pedido->FechaPedido = $request->input('fechapedido');
+    $pedido->FechaEntrega = $request->input('fechaentrega');
+    $pedido->Id_Cliente = $request->input('relacioncliente');
+    $pedido->Observaciones = $request->input('observacion');
+    
+    // Guardar los cambios en la base de datos
+    $pedido->save();
+    
+    // Redireccionar a la vista de detalles del pedido actualizado
+    //return redirect()->route('pedido.show', ['item' => $pedido->Id_Pedido]);
+
+    return redirect()->route('pedido.index');
+
     }
 
     /**
@@ -79,6 +135,13 @@ class PedidoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pedido = Order::findOrFail($id);
+
+
+        $pedido->delete();
+    
+        // Redirecciona a la página adecuada después de eliminar el cliente
+            // Redirecciona a la página adecuada después de eliminar el cliente
+        return redirect()->route('pedido.index');
     }
 }

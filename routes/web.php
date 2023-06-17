@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\PedidoController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -45,4 +46,28 @@ Route::get('/cliente/{item}/edit', [ClientController::class , 'edit'])->middlewa
 Route::put('/cliente/{item}', [ClientController::class , 'update'])->name('cliente.update');
 // Ruta para eliminar un registro específico
 Route::delete('/cliente/{item}',[ClientController::class  , 'destroy'] )->name('cliente.delete');
+
+
+
+
+// Ruta para mostrar todos los registros
+Route::get('/pedido', [PedidoController::class , 'index' ]   )->middleware('auth')->name('pedido.index');
+
+// Ruta para mostrar el formulario de creación
+Route::get('/pedido/create',[PedidoController::class , 'create'])->middleware('auth')->name('pedido.create');
+
+// Ruta para almacenar el nuevo registro creado
+Route::post('/pedido', [PedidoController::class , 'store'  ] )->name('pedido.store');
+// Ruta para mostrar un registro específico
+Route::get('/pedido/{item}', 'ItemController@show')->middleware('auth')->name('pedido.show');
+
+// Ruta para mostrar el formulario de edición de un registro
+Route::get('/pedido/{item}/edit', [PedidoController::class , 'edit'])->middleware('auth')->name('pedido.edit');
+
+// Ruta para actualizar un registro específico
+Route::put('/pedido/{item}', [PedidoController::class , 'update'])->name('pedido.update');
+// Ruta para eliminar un registro específico
+Route::delete('/pedido/{item}',[PedidoController::class  , 'destroy'] )->name('pedido.delete');
+
+
 
