@@ -10,7 +10,7 @@
     <div class="form-group row">
       <label for="exampleInputEmail1" class="col-sm-3 col-form-label">Fecha Pedido</label>
       <div class="col-sm-9">
-        <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="{{ $pedidoelegir->FechaPedido}}" name="fechapedido">
+        <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="{{ $pedidoelegir->FechaPedido}}" onfocus="{{ $pedidoelegir->FechaEntrega }}" name="fechapedido">
       </div>
     </div>
 
@@ -19,7 +19,7 @@
     <div class="form-group row">
       <label for="exampleInputEmail1" class="col-sm-3 col-form-label">Fecha Entrega</label>
       <div class="col-sm-9">
-        <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="{{ $pedidoelegir->FechaEntrega }}"  name="fechaentrega">
+        <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="MM/DD/YYYY"  onfocus="{{ $pedidoelegir->FechaEntrega }}" onblur="(this.type='text')" name="fechaentrega">
       </div>
     </div>
 
@@ -28,7 +28,7 @@
 
  <div class="input-group mb-3">
   <div class="input-group-prepend">
-    <label class="input-group-text" for="inputGroupSelect01">Options</label>
+    <label class="input-group-text" for="inputGroupSelect01">Cliente</label>
   </div>
   <select class="custom-select" id="inputGroupSelect01" name="relacioncliente">
   @php
