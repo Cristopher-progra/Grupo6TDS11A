@@ -139,4 +139,14 @@ class ClientController extends Controller
         return redirect()->route('cliente.index');
 
     }
+
+
+
+    
+    public function imprimir(){
+        $cliente = new Client(); // Obtén todos los clientes
+        $clientes = $cliente->all(); 
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('client.generate-pdf-cliente', compact('clientes'));
+        return $pdf->download('ejemplo.pdf');
+      }
 }

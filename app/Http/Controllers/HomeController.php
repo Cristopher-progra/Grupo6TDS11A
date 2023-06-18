@@ -27,20 +27,23 @@ class HomeController extends Controller
             [
                 'nombre' => 'Ronal Oswaldo',
                 'apellido' => 'Gonzalez Guardado',
-                'grupo' => 'Grupo 6',
+                'grupo' => ' TDSV11A',
             ],
             [
-                'nombre' => 'Jane',
-                'apellido' => 'Smith',
-                'grupo' => 'Grupo 2',
+                'nombre' => 'CRISTOPHER ALEXANDER 
+                ',
+                'apellido' => 'MOLINA VALLE',
+                'grupo' => ' TDSV11A',
             ],
             [
-                'nombre' => 'Alice',
-                'apellido' => 'Johnson',
-                'grupo' => 'Grupo 3',
+                'nombre' => 'RENÉ ADONAY ',
+                'apellido' => 'CAMPOS MELÉNDEZ',
+                'grupo' => ' TDSV11A',
             ],
         ];
 
         return view('home' , compact('integrantes'));
     }
 }
+
+

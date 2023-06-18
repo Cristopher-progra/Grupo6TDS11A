@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use App\Models\Order;
+
 use Illuminate\Http\Request;
+
 
 class PedidoController extends Controller
 {
@@ -144,4 +146,11 @@ class PedidoController extends Controller
             // Redirecciona a la página adecuada después de eliminar el cliente
         return redirect()->route('pedido.index');
     }
+
+    public function imprimir(){
+        $pedido = new Order(); // Obtén todos los clientes
+        $todoslospedidos = $pedido->all(); 
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('pedido.generare-pdf-pedido', compact('todoslospedidos'));
+        return $pdf->download('ejemplo.pdf');
+      }
 }

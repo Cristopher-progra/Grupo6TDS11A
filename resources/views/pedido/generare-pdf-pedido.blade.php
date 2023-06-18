@@ -1,17 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Otros elementos head... -->
 
-@extends('layouts.app')
-
-@section('content')
-
-
-
-
-<a href="{{ route('pedido.create') }}" class="btn btn-success">Crear Pedido</a>
-
+    <!-- Enlaces a los archivos CSS de Bootstrap -->
+    <link rel="stylesheet" href="ruta/a/bootstrap.min.css">
+    
+    <!-- Otros enlaces a tus archivos CSS personalizados -->
+</head>
+<body>
+    <!-- Contenido del cuerpo... -->
 
 
-<a href="{{ route('generar-reporte-pdf') }}" class="btn btn-primary">Generar Reporte PDF</a>
-
+    
 
 
 <table class="table">
@@ -58,5 +59,13 @@
 
 
 
-@endsection
+
+    <!-- Scripts JS de Bootstrap (requiere jQuery) -->
+    <script src="ruta/a/jquery.min.js"></script>
+    <script src="ruta/a/bootstrap.min.js"></script>
+    
+    <!-- Otros scripts JS personalizados -->
+</body>
+</html>
+
 
