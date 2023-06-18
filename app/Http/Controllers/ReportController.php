@@ -20,7 +20,7 @@ class ReportController extends Controller
         $pdf = new Dompdf();
         $pdf->loadHtml(View::make($vista)->render());
         $pdf->render();
-        return $pdf->stream('report.pdf');
+        return $pdf->stream('Reporte de Pedido.pdf');
     }
 
 
@@ -37,6 +37,6 @@ class ReportController extends Controller
         $pdf = new Dompdf();
         $pdf->loadHtml(View::make($vista)->render());
         $pdf->render();
-        return $pdf->stream('report.pdf');
+        return $pdf->stream('Reporte de Clientes.pdf');
     }
 }

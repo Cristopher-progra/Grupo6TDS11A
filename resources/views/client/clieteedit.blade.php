@@ -28,7 +28,7 @@
     <div class="form-group row">
       <label for="exampleInputPassword1" class="col-sm-3 col-form-label">Fecha de Nacimiento</label>
       <div class="col-sm-9">
-        <input type="date" class="form-control" id="exampleInputPassword1" placeholder="Fecha Nacimiento"  name="fechacliente" value="{{ $cliente->Fecha_Nac }}">
+        <input type="date" class="form-control" id="exampleInputPassword1" name="fechacliente" value="{{ $cliente->Fecha_Nac }}">
       </div>
     </div>
 
