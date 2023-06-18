@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -71,3 +72,7 @@ Route::delete('/pedido/{item}',[PedidoController::class  , 'destroy'] )->name('p
 
 
 
+Route::get('/generar-reporte-pedido', [PedidoController::class, 'imprimir'])->name('generar-reporte-pdf');
+
+
+Route::get('/generar-reporte-cliente', [ClientController::class, 'imprimir'])->name('generar-reporte-pdf-cliente');
